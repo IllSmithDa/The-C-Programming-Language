@@ -1,7 +1,6 @@
 // gcc -Wall -Wextra -o testls testls.c
 
 
-
 #include <stdio.h>
 
 #include <dirent.h>
