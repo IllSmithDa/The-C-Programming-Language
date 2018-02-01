@@ -30,6 +30,8 @@ int main(void) {
   p->leg_count = 12; // both dereferences the pointer
   
   lose_leg(&a) // calling function below using address instead of copy
+
+  animal_init(&a, 19); // calling animal init passing in values
 }
 
 void loseLeg(struct animal *p) {
@@ -55,3 +57,65 @@ typedef struct animal {  // 'animal'now becomes optional as 'Animal' is what is 
   float speed 
 }Animal;
 
+// function creating a instance animal struct 
+void animal_init(Animal *a  float speed) {
+  a->legCount = 4;
+  a->legSpeed = 3;
+}
+
+enum animal_type { // enum holds animal types
+  MAMMAL,
+  BIRD,
+  FISH
+}animal_type;
+
+typedef struct {
+  int legCount;
+  float speed;
+  animal_type type; // refers to the enum class and is refferenced by type
+}
+int x = BIRD; (also known as 1)
+animal_init(&a, 12, x);
+
+6. Operating Systems - Processes - Every operating system provides processes which are applications that run in user space. Process run in their own address space which means that variables in one processes are not visible to other process unless both explicity agree to communicate. 
+
+Threads - Thread ares processed that do share address space. A single process will often spawn a number of threads to handle tasks with each thread having access to all the variables in the process.
+
+Scheduling. Computers that has 4 cores can only run 4 programs at once but can handle hundreds of processes because the kernel switches which process gets run and gets switch into and out of core. Whenver a process is paused, the entire execution state is saved into main memory before the next process is loaded from main memory and execution is resumed. 
+
+Memory : Operating system is responsible for providing user programs access to meory by creating stack frame when program begins to execute and allocates a section of free memory for program to use. One vulnerability is that if a process is able to gain access to more memory than what it has been assigned to it, it can hijack the system. The program should have no knowledge of any memory than what has been allocated by the operating system. 
+
+Drivers: Drivers combine multiple languages including assembly, C, and intterupt driven programming to provide software control to hardware devices. It hides the detailsof communication from hardware to software developers. Hardware is built with PCIx bus controller and all drivers are written to control hardware on the other side of the PCIx bus.
+
+
+7. String comparisons 
+
+  s1 = "alpha1";
+  s2 = "alpha2";
+
+if(s1 == s2) // this will never happen
+
+if(strcmp(s1, s2)) // Use 'strcmp' to actually campare two strings
+
+a b c d e f \0
+{
+  int c = 0; 
+  char*p = s;
+
+  while (*p  != '\0') {
+    c++;
+    p++;
+  }
+  return c
+}
+
+a b c d e f \0
+{
+  char*p = s;
+
+  while (*p  != '\0') {
+    p++; // move onto the next character
+  }
+  return p-s; // pointer arithemetic  or difference between the addresses. 
+  // f-a will return 5.
+}
